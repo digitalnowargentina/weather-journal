@@ -15,13 +15,14 @@ function performAction(e){
   .then(
     function(data){
     console.log(data);
-    postData('/add', {temperature: data.temp, date: newDate, userResponse: userResponse});
+    postData('/add', {temperature: data.main.temp, date: newDate, userResponse: userResponse});
   })
   .then(
     updateUI()
   )
 
   }
+
 
 const getInfo = async (baseURL, zip, key)=>{
 
