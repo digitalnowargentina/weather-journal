@@ -45,7 +45,7 @@ function sendData (request, response) {
 
 app.post('/add', callBack);
 
-function callBack(req,res){
+function callBack(res, req){
   console.log(req.body);
   let newData = req.body;
   let newEntry = {

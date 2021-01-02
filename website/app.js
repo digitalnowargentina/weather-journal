@@ -1,5 +1,8 @@
 /* Global Variables */
 
+// Create a new date instance dynamically with JS
+let d = new Date();
+let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 let apiKey = '&appid=6220417be041a302eefd22f93e45fc86';
 
@@ -12,7 +15,7 @@ function performAction(e){
   .then(
     function(data){
     console.log(data);
-    postData('/add', {temperature: data.temperature, date: data.date, userResponse: userResponse});
+    postData('/add', {temperature: data.temp, date: newDate, userResponse: userResponse});
   })
   .then(
     updateUI()
@@ -58,15 +61,11 @@ const postData = async (url = '', data = {})=>{
     const request = await fetch('/all');
     try{
       const allData = await request.json();
-      document.getElementById('date').innerHTML = allData[0].temperature;
-      document.getElementById('temp').innerHTML = allData[0].date;
+      document.getElementById('date').innerHTML = allData[0].date;
+      document.getElementById('temp').innerHTML = allData[0].temperature;
       document.getElementById('content').innerHTML = allData[0].userResponse;
 
     }catch(error){
       console.log("error", error);
     }
   }
-
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
