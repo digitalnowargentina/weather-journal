@@ -49,7 +49,7 @@ function callBack(res, req){
   console.log(req.body);
   let newData = req.body;
   let newEntry = {
-    temperature: newData.temperature,
+    temperature: newData.temp,
     date: newData.date,
     userResponse: newData.userResponse
   }
