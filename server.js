@@ -45,7 +45,7 @@ function sendData (request, response) {
 
 app.post('/add', callBack);
 
-function callBack(res, req){
+function callBack(req, res){
   console.log(req.body);
   let newData = req.body;
   let newEntry = {
@@ -53,5 +53,5 @@ function callBack(res, req){
     date: newData.date,
     userResponse: newData.userResponse
   }
-  projectData.push(newEntry);
+  projectData = newEntry;
 }

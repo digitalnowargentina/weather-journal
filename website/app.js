@@ -17,11 +17,10 @@ function performAction(e){
     console.log(data);
     postData('/add', {temperature: data.main.temp, date: newDate, userResponse: userResponse});
   })
-  .then(
-    updateUI()
-  )
-
-  }
+      .then(function(){
+        updateUI()
+      });
+    }
 
 
 const getInfo = async (baseURL, zip, key)=>{
@@ -62,9 +61,9 @@ const postData = async (url = '', data = {})=>{
     const request = await fetch('/all');
     try{
       const allData = await request.json();
-      document.getElementById('date').innerHTML = allData[0].date;
-      document.getElementById('temp').innerHTML = allData[0].temperature;
-      document.getElementById('content').innerHTML = allData[0].userResponse;
+      document.getElementById('date').innerHTML = allData.date;
+      document.getElementById('temp').innerHTML = allData.temperature;
+      document.getElementById('content').innerHTML = allData.userResponse;
 
     }catch(error){
       console.log("error", error);
